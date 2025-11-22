@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Expense Tracker Pro</title>
+    <link rel="stylesheet" href="/css/expense.css">
+</head>
+<body>
+    <script src="https://sdk.cashfree.com/js/v3/cashfree.js"></script>
+    
+    <h1>EXPENSE TRACKER</h1>
+    
+    <button id="payBtn" style="display:none">Get Premium Feature</button>
+    
+    <form onsubmit="posting(event)">
+        <label>Amount Spend:</label> 
+        <input type="number" name="amountSpend" id="amountSpend"><br><br>
+        
+        <label>Where:</label> 
+        <select id="where" name="where">
+            <option>Fuel</option>
+            <option>Education</option>
+            <option>Food</option>
+            <option>Ration</option>
+            <option>Tour</option>
+        </select><br><br>
+        
+        <label>Description:</label> 
+        <input type="text" name="description" id="description"><br><br>
+        
+        <button type="submit">Submit</button>
+    </form>
+
+    <form id="editForm" style="display:none" onsubmit="updateData(event)">
+        <label>Amount Spend:</label> 
+        <input type="number" name="amountSpend" id="UpdateamountSpend"><br><br>
+        
+        <label>Where:</label> 
+        <select id="Updatewhere" name="where">
+            <option>Fuel</option>
+            <option>Education</option>
+            <option>Food</option>
+            <option>Ration</option>
+            <option>Tour</option>
+        </select><br><br>
+        
+        <label>Description:</label> 
+        <input type="text" name="description" id="updatedescription"><br><br>
+        
+        <button type="submit">Update</button>
+    </form>
+
+    <label>Number of Rows:</label>
+    <select id="rowsPage" onchange="receive()">
+        <option selected>5</option>
+        <option>10</option>
+        <option>20</option>
+        <option>40</option>
+    </select>
+    
+    <label>Filter:</label>
+    <select id="filterSelect" onchange="filterChange()" style="display:none">
+        <option value="all">All</option>
+        <option value="daily">Today</option>
+        <option value="weekly">Week</option>
+        <option value="monthly">Month</option>
+    </select>
+    
+    <table class="leaderboard-table" id="leaderBoard" style="display:none">
+        <thead>
+            <tr>
+                <th>Rank</th>
+                <th>Email</th>
+                <th>Total Expense (₹)</th>
+            </tr>
+        </thead>
+        <tbody id="leaderboard-body"></tbody>
+    </table>
+    
+    <form onsubmit="askAi(event)">
+        <label>Ask to AI:</label><br>
+        <input type="text" placeholder="Ask to Gemini" id="askBox"><br>
+        <button type="submit">Get Response</button>
+    </form>
+    
+    <p id="aiResponse"></p>
+    
+    <button id="downloadCSV" style="display:none">Download CSV</button>
+    
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="expense.js"></script>
+</body>
+</html>
