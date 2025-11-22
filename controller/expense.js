@@ -3,7 +3,7 @@ const trackform  = require("../models/expenses")
 const sequelize = require("../utils/database")
 const genAi = require("@google/genai")
 const ai = new genAi.GoogleGenAI({
-    apiKey:"AIzaSyDBp4qcmEtEDRcaClreqa89_trRi87Lua4"
+    apiKey:process.env.GOOGLE_API_KEY
   });
 post_data = async(req,res)=>{
     const userEmail = req.userEmail
@@ -110,4 +110,5 @@ async function update_data(req, res) {
         res.status(500).json({ error: "Failed to update expense" });
     }
 }
+
 module.exports  = {post_data,get_data,delete_data,creating_leaderboard,ask_Ai,update_data}
